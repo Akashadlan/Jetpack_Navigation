@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.jetpack_navigation.databinding.FragmentJetpackBinding
 import java.text.SimpleDateFormat
+import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +60,8 @@ class Jetpack_Fragment : Fragment() {
            findNavController().navigate(R.id.secondFragment)
        }
         binding?.btndate?.setOnClickListener {
+            var calendar = Calendar.getInstance()
+           // calendar.timeZone.inDaylightTime(Date(24))
             DatePickerDialog(
                 requireContext(), R.style.Base_Theme_Jetpack_Navigation,
                 { _, year, month, date ->
@@ -73,6 +77,11 @@ class Jetpack_Fragment : Fragment() {
             ).show()
         }
         binding?.btntime?.setOnClickListener {
+            var calendar = Calendar.getInstance()
+           // calendar.timeZone.inDaylightTime(Date(24))
+            if (calendar.timeInMillis<9 && calendar.timeInMillis>6){
+                Toast.makeText(requireContext(),"Your Time Is Remove",Toast.LENGTH_LONG).show()
+            }
             TimePickerDialog(requireContext(),R.style.Theme_Jetpack_Navigation,
                 {_, hour, minute ->
                     Log.e(TAG, "hour $hour minute $minute")
