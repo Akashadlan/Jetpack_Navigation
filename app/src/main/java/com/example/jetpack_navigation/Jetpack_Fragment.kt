@@ -60,7 +60,7 @@ class Jetpack_Fragment : Fragment() {
            findNavController().navigate(R.id.secondFragment)
        }
         binding?.btndate?.setOnClickListener {
-            var calendar = Calendar.getInstance()
+            var calendar = Calendar.getInstance()//
            // calendar.timeZone.inDaylightTime(Date(24))
             DatePickerDialog(
                 requireContext(), R.style.Base_Theme_Jetpack_Navigation,
